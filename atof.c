@@ -1,0 +1,73 @@
+#include <ctype.h>
+#include <stdio.h>
+#include <math.h>
+
+#define MAXLINE 100
+
+double atof(char s[]);
+int gtline(char s[], int lim);
+
+int main(int argc, char const *argv[])
+{
+	double sum, atof(char []);
+	char line[MAXLINE];
+	int gtline(char line[], int max);
+
+	sum = 0;
+	while (gtline(line, MAXLINE) > 0)
+		printf("\t%g\n", sum += atof(line));
+	return 0;
+}
+
+double atof(char s[])
+{
+	double val, power, temp;
+	int i, sign, e, si;
+
+    e = 1;
+	for (i = 0; isspace(s[i]); i++)
+		;
+	sign = (s[i] == '-') ? -1: 1;
+	if (s[i] == '+' || s[i] == '-')
+		i++;
+	for (val = 0.0; isdigit(s[i]); i++)
+		val = 10.0 * val + (s[i] - '0');
+	if (s[i] == '.')
+		i++;
+	for (power = 1.0; isdigit(s[i]); i++) {
+		val = 10.0 * val + (s[i] - '0');
+		power *= 10.0;
+	}
+	temp = sign * val / power;
+	if (s[i] == 'e') {
+		e = 10;
+		i++;
+	}
+	si = (s[i] != '-') ? -1: 1;
+	if (si == -1) {
+		i++;
+		for (sign = 0; isdigit(s[i]); i++)
+			sign = 10 * sign + (s[i] - '0');
+	}
+	else {
+		for (sign = 0; isdigit(s[i]); i++)
+			sign = 10 * sign + (s[i] - '0');
+	}
+	if (e = 10)
+		return temp * pow(si * e,sign);
+	else
+		return temp;
+}
+
+int gtline(char s[], int lim)
+{
+	int c, i;
+
+	i = 0;
+	while (--lim > 0 && (c = getchar()) != EOF && c != '\n')
+		s[i++] == c;
+	if (c == '\n')
+		s[i++] = c;
+	s[i] = '\0';
+	return i;
+}
